@@ -6,11 +6,11 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Финансы">
+<meta name="apple-mobile-web-app-title" content="Р¤РёРЅР°РЅСЃС‹">
 <meta name="theme-color" content="#1A7A4A">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Финансы — бюджет и расходы</title>
+<title>Р¤РёРЅР°РЅСЃС‹ вЂ” Р±СЋРґР¶РµС‚ Рё СЂР°СЃС…РѕРґС‹</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -184,10 +184,10 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15
 <body>
 <div id="app">
   <nav class="nav">
-    <span class="nav-title">💰 Финансы</span>
+    <span class="nav-title">рџ’° Р¤РёРЅР°РЅСЃС‹</span>
     <div class="nav-actions">
-      <button class="nav-btn" id="sync-btn" onclick="syncNow()" title="Синхронизировать">🔄</button>
-      <button class="nav-btn" onclick="openSettings()" title="Настройки">⚙️</button>
+      <button class="nav-btn" id="sync-btn" onclick="syncNow()" title="РЎРёРЅС…СЂРѕРЅРёР·РёСЂРѕРІР°С‚СЊ">рџ”„</button>
+      <button class="nav-btn" onclick="openSettings()" title="РќР°СЃС‚СЂРѕР№РєРё">вљ™пёЏ</button>
     </div>
   </nav>
 
@@ -197,37 +197,37 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15
   </div>
 
   <div class="tabs">
-    <button class="tab active" onclick="switchTab('overview')">Обзор</button>
-    <button class="tab" onclick="switchTab('transactions')">Операции</button>
-    <button class="tab" onclick="switchTab('categories')">Категории</button>
-    <button class="tab" onclick="switchTab('accounts')">Счета</button>
+    <button class="tab active" onclick="switchTab('overview')">РћР±Р·РѕСЂ</button>
+    <button class="tab" onclick="switchTab('transactions')">РћРїРµСЂР°С†РёРё</button>
+    <button class="tab" onclick="switchTab('categories')">РљР°С‚РµРіРѕСЂРёРё</button>
+    <button class="tab" onclick="switchTab('accounts')">РЎС‡РµС‚Р°</button>
   </div>
 
   <!-- OVERVIEW -->
   <div id="page-overview" class="page active">
     <div class="month-bar">
-      <button class="month-btn" onclick="changeMonth(-1)">‹</button>
+      <button class="month-btn" onclick="changeMonth(-1)">вЂ№</button>
       <span class="month-label" id="month-label"></span>
-      <button class="month-btn" onclick="changeMonth(1)">›</button>
+      <button class="month-btn" onclick="changeMonth(1)">вЂє</button>
     </div>
     <div class="summary-row">
-      <div class="summary-card income"><div class="s-label">Доходы</div><div class="s-val" id="total-income">0</div></div>
-      <div class="summary-card expense"><div class="s-label">Расходы</div><div class="s-val" id="total-expense">0</div></div>
-      <div class="summary-card balance"><div class="s-label">Баланс</div><div class="s-val" id="total-balance">0</div></div>
+      <div class="summary-card income"><div class="s-label">Р”РѕС…РѕРґС‹</div><div class="s-val" id="total-income">0</div></div>
+      <div class="summary-card expense"><div class="s-label">Р Р°СЃС…РѕРґС‹</div><div class="s-val" id="total-expense">0</div></div>
+      <div class="summary-card balance"><div class="s-label">Р‘Р°Р»Р°РЅСЃ</div><div class="s-val" id="total-balance">0</div></div>
     </div>
     <div class="chart-section">
       <div class="chart-header">
-        <span class="chart-title">Динамика за месяц</span>
+        <span class="chart-title">Р”РёРЅР°РјРёРєР° Р·Р° РјРµСЃСЏС†</span>
         <div class="chart-toggle">
-          <button class="ct-btn active" id="ct-expense" onclick="toggleChart('expense')">Расходы</button>
-          <button class="ct-btn" id="ct-income" onclick="toggleChart('income')">Доходы</button>
+          <button class="ct-btn active" id="ct-expense" onclick="toggleChart('expense')">Р Р°СЃС…РѕРґС‹</button>
+          <button class="ct-btn" id="ct-income" onclick="toggleChart('income')">Р”РѕС…РѕРґС‹</button>
         </div>
       </div>
       <div class="chart-wrap"><canvas id="barChart"></canvas></div>
     </div>
     <div class="section-header">
-      <span class="section-title">Последние операции</span>
-      <button class="see-all" onclick="switchTab('transactions')">Все →</button>
+      <span class="section-title">РџРѕСЃР»РµРґРЅРёРµ РѕРїРµСЂР°С†РёРё</span>
+      <button class="see-all" onclick="switchTab('transactions')">Р’СЃРµ в†’</button>
     </div>
     <div class="tx-list" id="recent-list"></div>
   </div>
@@ -235,19 +235,19 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15
   <!-- TRANSACTIONS -->
   <div id="page-transactions" class="page">
     <div class="month-bar">
-      <button class="month-btn" onclick="changeMonth(-1)">‹</button>
+      <button class="month-btn" onclick="changeMonth(-1)">вЂ№</button>
       <span class="month-label" id="month-label-tx"></span>
-      <button class="month-btn" onclick="changeMonth(1)">›</button>
+      <button class="month-btn" onclick="changeMonth(1)">вЂє</button>
     </div>
     <div style="padding:10px 14px 4px;display:flex;gap:8px;">
       <select id="filter-type" onchange="renderTransactions()" style="flex:1;padding:9px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-family:var(--font);font-size:12px;font-weight:700;-webkit-appearance:none;appearance:none">
-        <option value="all">Все операции</option>
-        <option value="expense">Расходы</option>
-        <option value="income">Доходы</option>
+        <option value="all">Р’СЃРµ РѕРїРµСЂР°С†РёРё</option>
+        <option value="expense">Р Р°СЃС…РѕРґС‹</option>
+        <option value="income">Р”РѕС…РѕРґС‹</option>
       </select>
       <select id="filter-sort" onchange="renderTransactions()" style="flex:1;padding:9px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-family:var(--font);font-size:12px;font-weight:700;-webkit-appearance:none;appearance:none">
-        <option value="date">По дате</option>
-        <option value="amount">По сумме</option>
+        <option value="date">РџРѕ РґР°С‚Рµ</option>
+        <option value="amount">РџРѕ СЃСѓРјРјРµ</option>
       </select>
     </div>
     <div style="padding:0 14px;margin-top:8px;" id="tx-full-list"></div>
@@ -256,16 +256,17 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15
   <!-- CATEGORIES -->
   <div id="page-categories" class="page">
     <div class="month-bar">
-      <button class="month-btn" onclick="changeMonth(-1)">‹</button>
+      <button class="month-btn" onclick="changeMonth(-1)">вЂ№</button>
       <span class="month-label" id="month-label-cat"></span>
-      <button class="month-btn" onclick="changeMonth(1)">›</button>
+      <button class="month-btn" onclick="changeMonth(1)">вЂє</button>
     </div>
-    <div style="padding:10px 14px 4px;display:flex;gap:8px;">
-      <button class="ct-btn active" id="cat-expense-btn" style="flex:1;padding:9px;" onclick="setCatMode('expense')">Расходы</button>
-      <button class="ct-btn" id="cat-income-btn" style="flex:1;padding:9px;" onclick="setCatMode('income')">Доходы</button>
+    <div style="padding:10px 14px 4px;display:flex;gap:8px;align-items:center;">
+      <button class="ct-btn active" id="cat-expense-btn" style="flex:1;padding:9px;" onclick="setCatMode('expense')">Р Р°СЃС…РѕРґС‹</button>
+      <button class="ct-btn" id="cat-income-btn" style="flex:1;padding:9px;" onclick="setCatMode('income')">Р”РѕС…РѕРґС‹</button>
+      <button onclick="openManageCats()" style="width:36px;height:36px;border-radius:50%;background:var(--surface);border:1.5px solid var(--border2);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" title="РЈРїСЂР°РІР»РµРЅРёРµ РєР°С‚РµРіРѕСЂРёСЏРјРё">вљ™пёЏ</button>
     </div>
     <div class="cat-donut">
-      <div class="chart-header"><span class="chart-title">Структура за месяц</span></div>
+      <div class="chart-header"><span class="chart-title">РЎС‚СЂСѓРєС‚СѓСЂР° Р·Р° РјРµСЃСЏС†</span></div>
       <div class="chart-wrap" style="height:190px;"><canvas id="donutChart"></canvas></div>
     </div>
     <div class="cat-list" id="cat-list"></div>
@@ -275,11 +276,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15
   <div id="page-accounts" class="page">
     <div class="accounts-list" id="accounts-list"></div>
     <div style="padding:0 14px 14px;">
-      <button class="add-account-btn" onclick="openAddAccount()">＋ Добавить счёт</button>
+      <button class="add-account-btn" onclick="openAddAccount()">пј‹ Р”РѕР±Р°РІРёС‚СЊ СЃС‡С‘С‚</button>
     </div>
   </div>
 
-  <button class="fab" onclick="openAddTx()">＋</button>
+  <button class="fab" onclick="openAddTx()">пј‹</button>
 </div>
 
 <!-- ADD TX MODAL -->
@@ -287,32 +288,32 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <span class="modal-title">Новая операция</span>
-      <button class="modal-close" onclick="closeModal('modal-add')">✕</button>
+      <span class="modal-title">РќРѕРІР°СЏ РѕРїРµСЂР°С†РёСЏ</span>
+      <button class="modal-close" onclick="closeModal('modal-add')">вњ•</button>
     </div>
     <div class="type-toggle">
-      <button class="type-btn active expense" id="btn-expense" onclick="setType('expense')">Расход</button>
-      <button class="type-btn income" id="btn-income" onclick="setType('income')">Доход</button>
+      <button class="type-btn active expense" id="btn-expense" onclick="setType('expense')">Р Р°СЃС…РѕРґ</button>
+      <button class="type-btn income" id="btn-income" onclick="setType('income')">Р”РѕС…РѕРґ</button>
     </div>
     <div class="form-group">
-      <label class="form-label">Сумма</label>
+      <label class="form-label">РЎСѓРјРјР°</label>
       <input class="form-input amount-input" type="number" id="tx-amount" placeholder="0.00" min="0" step="any" inputmode="decimal">
     </div>
     <div class="form-group">
-      <label class="form-label">Описание</label>
-      <input class="form-input" type="text" id="tx-note" placeholder="Например: продукты">
+      <label class="form-label">РћРїРёСЃР°РЅРёРµ</label>
+      <input class="form-input" type="text" id="tx-note" placeholder="РќР°РїСЂРёРјРµСЂ: РїСЂРѕРґСѓРєС‚С‹">
     </div>
     <div class="form-group">
-      <label class="form-label">Дата</label>
+      <label class="form-label">Р”Р°С‚Р°</label>
       <input class="form-input" type="date" id="tx-date">
     </div>
     <div class="form-group">
-      <label class="form-label">Счёт</label>
+      <label class="form-label">РЎС‡С‘С‚</label>
       <select class="form-input" id="tx-account"></select>
     </div>
-    <div class="form-group" style="padding-bottom:0;"><label class="form-label">Категория</label></div>
+    <div class="form-group" style="padding-bottom:0;"><label class="form-label">РљР°С‚РµРіРѕСЂРёСЏ</label></div>
     <div class="cats-grid" id="cats-grid"></div>
-    <button class="submit-btn" onclick="saveTx()">Сохранить</button>
+    <button class="submit-btn" onclick="saveTx()">РЎРѕС…СЂР°РЅРёС‚СЊ</button>
   </div>
 </div>
 
@@ -321,39 +322,39 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <span class="modal-title">Настройки</span>
-      <button class="modal-close" onclick="closeModal('modal-settings')">✕</button>
+      <span class="modal-title">РќР°СЃС‚СЂРѕР№РєРё</span>
+      <button class="modal-close" onclick="closeModal('modal-settings')">вњ•</button>
     </div>
     <div style="padding:0 22px;">
       <div style="margin-bottom:16px;">
-        <label class="form-label">Валюта</label>
+        <label class="form-label">Р’Р°Р»СЋС‚Р°</label>
         <select class="form-input" id="pref-currency" onchange="savePref()">
-          <option value="₽">₽ Рубль</option>
-          <option value="€">€ Евро</option>
-          <option value="$">$ Доллар</option>
-          <option value="£">£ Фунт</option>
-          <option value="лв">лв Латвийский лат</option>
+          <option value="в‚Ѕ">в‚Ѕ Р СѓР±Р»СЊ</option>
+          <option value="в‚¬">в‚¬ Р•РІСЂРѕ</option>
+          <option value="$">$ Р”РѕР»Р»Р°СЂ</option>
+          <option value="ВЈ">ВЈ Р¤СѓРЅС‚</option>
+          <option value="Р»РІ">Р»РІ Р›Р°С‚РІРёР№СЃРєРёР№ Р»Р°С‚</option>
         </select>
       </div>
 
       <div style="margin-bottom:20px;padding:16px;background:var(--surface2);border-radius:var(--radius-sm);">
         <div style="font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
-          ☁️ Синхронизация с Google Sheets
+          вЃпёЏ РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ СЃ Google Sheets
         </div>
         <div style="font-size:12px;color:var(--text2);margin-bottom:10px;line-height:1.5;">
-          Вставьте URL вашего Google Apps Script для синхронизации между устройствами.
-          <a href="#" onclick="openSetupGuide();return false;" style="color:var(--accent);font-weight:700;">Как настроить →</a>
+          Р’СЃС‚Р°РІСЊС‚Рµ URL РІР°С€РµРіРѕ Google Apps Script РґР»СЏ СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёРё РјРµР¶РґСѓ СѓСЃС‚СЂРѕР№СЃС‚РІР°РјРё.
+          <a href="#" onclick="openSetupGuide();return false;" style="color:var(--accent);font-weight:700;">РљР°Рє РЅР°СЃС‚СЂРѕРёС‚СЊ в†’</a>
         </div>
         <input class="form-input" type="url" id="pref-script-url" placeholder="https://script.google.com/macros/s/..." style="font-size:12px;padding:10px 12px;margin-bottom:8px;">
         <div style="display:flex;gap:8px;">
-          <button class="test-btn" onclick="testConnection()" style="flex:1;">Проверить подключение</button>
-          <button class="test-btn" onclick="saveScriptUrl()" style="flex:1;background:var(--accent);color:#fff;">Сохранить</button>
+          <button class="test-btn" onclick="testConnection()" style="flex:1;">РџСЂРѕРІРµСЂРёС‚СЊ РїРѕРґРєР»СЋС‡РµРЅРёРµ</button>
+          <button class="test-btn" onclick="saveScriptUrl()" style="flex:1;background:var(--accent);color:#fff;">РЎРѕС…СЂР°РЅРёС‚СЊ</button>
         </div>
         <div id="conn-status" style="font-size:12px;margin-top:8px;min-height:16px;"></div>
       </div>
 
       <button class="submit-btn" style="background:var(--red-bg);color:var(--red);margin:0 0 10px;" onclick="clearData()">
-        Очистить все данные
+        РћС‡РёСЃС‚РёС‚СЊ РІСЃРµ РґР°РЅРЅС‹Рµ
       </button>
     </div>
   </div>
@@ -364,46 +365,46 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15
   <div class="modal" style="border-radius:24px 24px 0 0;">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <span class="modal-title">☁️ Настройка синхронизации</span>
-      <button class="modal-close" onclick="closeModal('modal-setup')">✕</button>
+      <span class="modal-title">вЃпёЏ РќР°СЃС‚СЂРѕР№РєР° СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёРё</span>
+      <button class="modal-close" onclick="closeModal('modal-setup')">вњ•</button>
     </div>
     <div class="setup-screen">
       <div class="setup-card">
         <div class="setup-step">
           <div class="step-num">1</div>
           <div class="step-content">
-            <h3>Откройте Google Sheets</h3>
-            <p>Создайте новую таблицу на <a href="https://sheets.google.com" target="_blank">sheets.google.com</a> и скопируйте её ID из адресной строки:<br>
-            <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:11px;">docs.google.com/spreadsheets/d/<b>ВОТ_ЭТОТ_ID</b>/edit</code></p>
+            <h3>РћС‚РєСЂРѕР№С‚Рµ Google Sheets</h3>
+            <p>РЎРѕР·РґР°Р№С‚Рµ РЅРѕРІСѓСЋ С‚Р°Р±Р»РёС†Сѓ РЅР° <a href="https://sheets.google.com" target="_blank">sheets.google.com</a> Рё СЃРєРѕРїРёСЂСѓР№С‚Рµ РµС‘ ID РёР· Р°РґСЂРµСЃРЅРѕР№ СЃС‚СЂРѕРєРё:<br>
+            <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:11px;">docs.google.com/spreadsheets/d/<b>Р’РћРў_Р­РўРћРў_ID</b>/edit</code></p>
           </div>
         </div>
         <div class="setup-step">
           <div class="step-num">2</div>
           <div class="step-content">
-            <h3>Создайте Apps Script</h3>
-            <p>В таблице: <b>Расширения → Apps Script</b>. Удалите весь код и вставьте код ниже, заменив YOUR_SHEET_ID на ID вашей таблицы:</p>
+            <h3>РЎРѕР·РґР°Р№С‚Рµ Apps Script</h3>
+            <p>Р’ С‚Р°Р±Р»РёС†Рµ: <b>Р Р°СЃС€РёСЂРµРЅРёСЏ в†’ Apps Script</b>. РЈРґР°Р»РёС‚Рµ РІРµСЃСЊ РєРѕРґ Рё РІСЃС‚Р°РІСЊС‚Рµ РєРѕРґ РЅРёР¶Рµ, Р·Р°РјРµРЅРёРІ YOUR_SHEET_ID РЅР° ID РІР°С€РµР№ С‚Р°Р±Р»РёС†С‹:</p>
             <div style="margin-top:8px;position:relative;">
               <pre id="script-code" style="background:var(--surface2);padding:12px;border-radius:8px;font-size:10px;overflow-x:auto;line-height:1.6;white-space:pre-wrap;word-break:break-all;color:var(--text)"></pre>
-              <button onclick="copyScriptCode()" style="position:absolute;top:8px;right:8px;padding:4px 10px;border-radius:6px;border:none;background:var(--accent);color:#fff;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font)">Копировать</button>
+              <button onclick="copyScriptCode()" style="position:absolute;top:8px;right:8px;padding:4px 10px;border-radius:6px;border:none;background:var(--accent);color:#fff;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font)">РљРѕРїРёСЂРѕРІР°С‚СЊ</button>
             </div>
           </div>
         </div>
         <div class="setup-step">
           <div class="step-num">3</div>
           <div class="step-content">
-            <h3>Опубликуйте как веб-приложение</h3>
-            <p>В Apps Script: <b>Развернуть → Новое развёртывание</b>. Выберите тип «Веб-приложение», доступ «Все». Скопируйте полученный URL.</p>
+            <h3>РћРїСѓР±Р»РёРєСѓР№С‚Рµ РєР°Рє РІРµР±-РїСЂРёР»РѕР¶РµРЅРёРµ</h3>
+            <p>Р’ Apps Script: <b>Р Р°Р·РІРµСЂРЅСѓС‚СЊ в†’ РќРѕРІРѕРµ СЂР°Р·РІС‘СЂС‚С‹РІР°РЅРёРµ</b>. Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї В«Р’РµР±-РїСЂРёР»РѕР¶РµРЅРёРµВ», РґРѕСЃС‚СѓРї В«Р’СЃРµВ». РЎРєРѕРїРёСЂСѓР№С‚Рµ РїРѕР»СѓС‡РµРЅРЅС‹Р№ URL.</p>
           </div>
         </div>
         <div class="setup-step" style="margin-bottom:0;">
           <div class="step-num">4</div>
           <div class="step-content">
-            <h3>Вставьте URL в настройки</h3>
-            <p>Закройте это окно, вставьте URL в поле «Синхронизация» в настройках и нажмите «Сохранить».</p>
+            <h3>Р’СЃС‚Р°РІСЊС‚Рµ URL РІ РЅР°СЃС‚СЂРѕР№РєРё</h3>
+            <p>Р—Р°РєСЂРѕР№С‚Рµ СЌС‚Рѕ РѕРєРЅРѕ, РІСЃС‚Р°РІСЊС‚Рµ URL РІ РїРѕР»Рµ В«РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏВ» РІ РЅР°СЃС‚СЂРѕР№РєР°С… Рё РЅР°Р¶РјРёС‚Рµ В«РЎРѕС…СЂР°РЅРёС‚СЊВ».</p>
           </div>
         </div>
       </div>
-      <button class="submit-btn" style="margin:0;" onclick="closeModal('modal-setup')">Понятно</button>
+      <button class="submit-btn" style="margin:0;" onclick="closeModal('modal-setup')">РџРѕРЅСЏС‚РЅРѕ</button>
     </div>
   </div>
 </div>
@@ -413,34 +414,80 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <span class="modal-title">Редактировать</span>
-      <button class="modal-close" onclick="closeModal('modal-edit')">✕</button>
+      <span class="modal-title">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</span>
+      <button class="modal-close" onclick="closeModal('modal-edit')">вњ•</button>
     </div>
     <div class="type-toggle">
-      <button class="type-btn active expense" id="edit-btn-expense" onclick="setEditType('expense')">Расход</button>
-      <button class="type-btn income" id="edit-btn-income" onclick="setEditType('income')">Доход</button>
+      <button class="type-btn active expense" id="edit-btn-expense" onclick="setEditType('expense')">Р Р°СЃС…РѕРґ</button>
+      <button class="type-btn income" id="edit-btn-income" onclick="setEditType('income')">Р”РѕС…РѕРґ</button>
     </div>
     <div class="form-group">
-      <label class="form-label">Сумма</label>
+      <label class="form-label">РЎСѓРјРјР°</label>
       <input class="form-input amount-input" type="number" id="edit-amount" placeholder="0.00" min="0" step="any" inputmode="decimal">
     </div>
     <div class="form-group">
-      <label class="form-label">Описание</label>
-      <input class="form-input" type="text" id="edit-note" placeholder="Например: продукты">
+      <label class="form-label">РћРїРёСЃР°РЅРёРµ</label>
+      <input class="form-input" type="text" id="edit-note" placeholder="РќР°РїСЂРёРјРµСЂ: РїСЂРѕРґСѓРєС‚С‹">
     </div>
     <div class="form-group">
-      <label class="form-label">Дата</label>
+      <label class="form-label">Р”Р°С‚Р°</label>
       <input class="form-input" type="date" id="edit-date">
     </div>
     <div class="form-group">
-      <label class="form-label">Счёт</label>
+      <label class="form-label">РЎС‡С‘С‚</label>
       <select class="form-input" id="edit-account"></select>
     </div>
-    <div class="form-group" style="padding-bottom:0;"><label class="form-label">Категория</label></div>
+    <div class="form-group" style="padding-bottom:0;"><label class="form-label">РљР°С‚РµРіРѕСЂРёСЏ</label></div>
     <div class="cats-grid" id="edit-cats-grid"></div>
-    <button class="submit-btn" onclick="saveEditTx()">Сохранить изменения</button>
+    <button class="submit-btn" onclick="saveEditTx()">РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</button>
     <button onclick="deleteTx()" style="display:block;width:calc(100% - 44px);margin:10px 22px 0;padding:14px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-size:14px;font-weight:700;font-family:var(--font);color:var(--red);background:var(--red-bg);">
-      🗑 Удалить операцию
+      рџ—‘ РЈРґР°Р»РёС‚СЊ РѕРїРµСЂР°С†РёСЋ
+    </button>
+  </div>
+</div>
+
+<!-- EDIT ACCOUNT MODAL -->
+<div class="modal-overlay" id="modal-edit-acc">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <span class="modal-title">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЃС‡С‘С‚</span>
+      <button class="modal-close" onclick="closeModal('modal-edit-acc')">вњ•</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">РќР°Р·РІР°РЅРёРµ</label>
+      <input class="form-input" type="text" id="edit-acc-name" placeholder="РќР°РїСЂРёРјРµСЂ: РљРѕС€РµР»С‘Рє">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Р‘Р°Р»Р°РЅСЃ</label>
+      <input class="form-input amount-input" type="number" id="edit-acc-balance" placeholder="0.00" inputmode="decimal">
+    </div>
+    <div class="form-group">
+      <label class="form-label">РўРёРї СЃС‡С‘С‚Р°</label>
+      <select class="form-input" id="edit-acc-type">
+        <option value="cash">рџ’µ РќР°Р»РёС‡РЅС‹Рµ</option>
+        <option value="card">рџ’і Р‘Р°РЅРєРѕРІСЃРєР°СЏ РєР°СЂС‚Р°</option>
+        <option value="deposit">рџЏ¦ Р”РµРїРѕР·РёС‚</option>
+        <option value="savings">рџђ· РљРѕРїРёР»РєР°</option>
+        <option value="crypto">в‚ї РљСЂРёРїС‚Рѕ</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Р’Р°Р»СЋС‚Р°</label>
+      <select class="form-input" id="edit-acc-currency">
+        <option value="в‚Ѕ">в‚Ѕ Р СѓР±Р»СЊ</option>
+        <option value="в‚¬">в‚¬ Р•РІСЂРѕ</option>
+        <option value="$">$ Р”РѕР»Р»Р°СЂ</option>
+        <option value="ВЈ">ВЈ Р¤СѓРЅС‚</option>
+        <option value="Р»РІ">Р»РІ Р›Р°С‚</option>
+      </select>
+    </div>
+    <div style="padding:0 22px;margin-bottom:4px;">
+      <span id="edit-acc-info" style="font-size:12px;color:var(--text3);"></span>
+    </div>
+    <button class="submit-btn" onclick="saveEditAcc()">РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</button>
+    <button onclick="deleteAcc()" style="display:block;width:calc(100% - 44px);margin:10px 22px 0;padding:14px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-size:14px;font-weight:700;font-family:var(--font);color:var(--red);background:var(--red-bg);">
+      рџ—‘ РЈРґР°Р»РёС‚СЊ СЃС‡С‘С‚
     </button>
   </div>
 </div>
@@ -450,62 +497,113 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <span class="modal-title">Новый счёт</span>
-      <button class="modal-close" onclick="closeModal('modal-account')">✕</button>
+      <span class="modal-title">РќРѕРІС‹Р№ СЃС‡С‘С‚</span>
+      <button class="modal-close" onclick="closeModal('modal-account')">вњ•</button>
     </div>
     <div class="form-group">
-      <label class="form-label">Название</label>
-      <input class="form-input" type="text" id="acc-name" placeholder="Например: Кошелёк">
+      <label class="form-label">РќР°Р·РІР°РЅРёРµ</label>
+      <input class="form-input" type="text" id="acc-name" placeholder="РќР°РїСЂРёРјРµСЂ: РљРѕС€РµР»С‘Рє">
     </div>
     <div class="form-group">
-      <label class="form-label">Начальный баланс</label>
+      <label class="form-label">РќР°С‡Р°Р»СЊРЅС‹Р№ Р±Р°Р»Р°РЅСЃ</label>
       <input class="form-input amount-input" type="number" id="acc-balance" placeholder="0.00" inputmode="decimal">
     </div>
     <div class="form-group">
-      <label class="form-label">Тип счёта</label>
+      <label class="form-label">РўРёРї СЃС‡С‘С‚Р°</label>
       <select class="form-input" id="acc-type">
-        <option value="cash">💵 Наличные</option>
-        <option value="card">💳 Банковская карта</option>
-        <option value="deposit">🏦 Депозит</option>
-        <option value="savings">🐷 Копилка</option>
-        <option value="crypto">₿ Крипто</option>
+        <option value="cash">рџ’µ РќР°Р»РёС‡РЅС‹Рµ</option>
+        <option value="card">рџ’і Р‘Р°РЅРєРѕРІСЃРєР°СЏ РєР°СЂС‚Р°</option>
+        <option value="deposit">рџЏ¦ Р”РµРїРѕР·РёС‚</option>
+        <option value="savings">рџђ· РљРѕРїРёР»РєР°</option>
+        <option value="crypto">в‚ї РљСЂРёРїС‚Рѕ</option>
       </select>
     </div>
     <div class="form-group">
-      <label class="form-label">Валюта</label>
+      <label class="form-label">Р’Р°Р»СЋС‚Р°</label>
       <select class="form-input" id="acc-currency">
-        <option value="₽">₽ Рубль</option>
-        <option value="€">€ Евро</option>
-        <option value="$">$ Доллар</option>
-        <option value="£">£ Фунт</option>
-        <option value="лв">лв Лат</option>
+        <option value="в‚Ѕ">в‚Ѕ Р СѓР±Р»СЊ</option>
+        <option value="в‚¬">в‚¬ Р•РІСЂРѕ</option>
+        <option value="$">$ Р”РѕР»Р»Р°СЂ</option>
+        <option value="ВЈ">ВЈ Р¤СѓРЅС‚</option>
+        <option value="Р»РІ">Р»РІ Р›Р°С‚</option>
       </select>
     </div>
-    <button class="submit-btn" onclick="saveAccount()">Добавить счёт</button>
+    <button class="submit-btn" onclick="saveAccount()">Р”РѕР±Р°РІРёС‚СЊ СЃС‡С‘С‚</button>
+  </div>
+</div>
+
+<!-- MANAGE CATEGORIES MODAL -->
+<div class="modal-overlay" id="modal-manage-cats">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <span class="modal-title">РљР°С‚РµРіРѕСЂРёРё</span>
+      <button class="modal-close" onclick="closeModal('modal-manage-cats')">вњ•</button>
+    </div>
+    <div style="display:flex;gap:4px;margin:0 22px 16px;background:var(--surface2);border-radius:var(--radius-sm);padding:3px;">
+      <button class="type-btn active expense" id="mcat-btn-expense" onclick="setManageCatType('expense')" style="flex:1;padding:9px;">Р Р°СЃС…РѕРґС‹</button>
+      <button class="type-btn income" id="mcat-btn-income" onclick="setManageCatType('income')" style="flex:1;padding:9px;">Р”РѕС…РѕРґС‹</button>
+    </div>
+    <div id="manage-cats-list" style="padding:0 22px;max-height:50vh;overflow-y:auto;display:flex;flex-direction:column;gap:8px;"></div>
+    <button class="submit-btn" onclick="openAddCat()" style="margin-top:14px;">пј‹ Р”РѕР±Р°РІРёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ</button>
+  </div>
+</div>
+
+<!-- ADD / EDIT CATEGORY MODAL -->
+<div class="modal-overlay" id="modal-edit-cat">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <span class="modal-title" id="edit-cat-title">РќРѕРІР°СЏ РєР°С‚РµРіРѕСЂРёСЏ</span>
+      <button class="modal-close" onclick="closeModal('modal-edit-cat')">вњ•</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">РќР°Р·РІР°РЅРёРµ</label>
+      <input class="form-input" type="text" id="edit-cat-name" placeholder="РќР°РїСЂРёРјРµСЂ: Р РµСЃС‚РѕСЂР°РЅС‹">
+    </div>
+    <div class="form-group">
+      <label class="form-label">РРєРѕРЅРєР° (СЌРјРѕРґР·Рё)</label>
+      <input class="form-input" type="text" id="edit-cat-icon" placeholder="рџЌЅпёЏ" style="font-size:28px;text-align:center;">
+    </div>
+    <div class="form-group">
+      <label class="form-label">РўРёРї</label>
+      <select class="form-input" id="edit-cat-type">
+        <option value="expense">Р Р°СЃС…РѕРґ</option>
+        <option value="income">Р”РѕС…РѕРґ</option>
+      </select>
+    </div>
+    <div style="padding:0 22px 4px;font-size:12px;color:var(--text3);">РџРѕРїСѓР»СЏСЂРЅС‹Рµ РёРєРѕРЅРєРё: рџЌ• рџљ• рџЏ‹пёЏ рџ’‡ рџЋ® рџ“– рџђ¶ рџЊЌ рџЋЂ рџ’» рџЏЄ рџ’€ рџ§ґ рџЋё рџЌє рџ§Ѓ рџЋЇ рџЏ–пёЏ</div>
+    <button class="submit-btn" onclick="saveEditCat()">РЎРѕС…СЂР°РЅРёС‚СЊ</button>
+    <button id="delete-cat-btn" onclick="deleteCat()" style="display:none;width:calc(100% - 44px);margin:10px 22px 0;padding:14px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-size:14px;font-weight:700;font-family:var(--font);color:var(--red);background:var(--red-bg);">
+      рџ—‘ РЈРґР°Р»РёС‚СЊ РєР°С‚РµРіРѕСЂРёСЋ
+    </button>
   </div>
 </div>
 
 <script>
-const MONTHS=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
-const CATS_EXPENSE=[
-  {id:'food',name:'Продукты',icon:'🛒'},{id:'cafe',name:'Кафе',icon:'☕'},
-  {id:'transport',name:'Транспорт',icon:'🚇'},{id:'housing',name:'Жильё',icon:'🏠'},
-  {id:'health',name:'Здоровье',icon:'💊'},{id:'sport',name:'Спорт',icon:'🏃'},
-  {id:'clothes',name:'Одежда',icon:'👗'},{id:'beauty',name:'Красота',icon:'💄'},
-  {id:'entertainment',name:'Развлечения',icon:'🎬'},{id:'education',name:'Учёба',icon:'📚'},
-  {id:'pets',name:'Питомцы',icon:'🐱'},{id:'travel',name:'Путешествия',icon:'✈️'},
-  {id:'gifts',name:'Подарки',icon:'🎁'},{id:'tech',name:'Техника',icon:'📱'},
-  {id:'car',name:'Авто',icon:'🚗'},{id:'utilities',name:'Коммуналка',icon:'💡'},
-  {id:'subscription',name:'Подписки',icon:'📺'},{id:'other_exp',name:'Другое',icon:'📦'},
+const MONTHS=['РЇРЅРІР°СЂСЊ','Р¤РµРІСЂР°Р»СЊ','РњР°СЂС‚','РђРїСЂРµР»СЊ','РњР°Р№','РСЋРЅСЊ','РСЋР»СЊ','РђРІРіСѓСЃС‚','РЎРµРЅС‚СЏР±СЂСЊ','РћРєС‚СЏР±СЂСЊ','РќРѕСЏР±СЂСЊ','Р”РµРєР°Р±СЂСЊ'];
+const DEFAULT_CATS_EXPENSE=[
+  {id:'food',name:'РџСЂРѕРґСѓРєС‚С‹',icon:'рџ›’'},{id:'cafe',name:'РљР°С„Рµ',icon:'в•'},
+  {id:'transport',name:'РўСЂР°РЅСЃРїРѕСЂС‚',icon:'рџљ‡'},{id:'housing',name:'Р–РёР»СЊС‘',icon:'рџЏ '},
+  {id:'health',name:'Р—РґРѕСЂРѕРІСЊРµ',icon:'рџ’Љ'},{id:'sport',name:'РЎРїРѕСЂС‚',icon:'рџЏѓ'},
+  {id:'clothes',name:'РћРґРµР¶РґР°',icon:'рџ‘—'},{id:'beauty',name:'РљСЂР°СЃРѕС‚Р°',icon:'рџ’„'},
+  {id:'entertainment',name:'Р Р°Р·РІР»РµС‡РµРЅРёСЏ',icon:'рџЋ¬'},{id:'education',name:'РЈС‡С‘Р±Р°',icon:'рџ“љ'},
+  {id:'pets',name:'РџРёС‚РѕРјС†С‹',icon:'рџђ±'},{id:'travel',name:'РџСѓС‚РµС€РµСЃС‚РІРёСЏ',icon:'вњ€пёЏ'},
+  {id:'gifts',name:'РџРѕРґР°СЂРєРё',icon:'рџЋЃ'},{id:'tech',name:'РўРµС…РЅРёРєР°',icon:'рџ“±'},
+  {id:'car',name:'РђРІС‚Рѕ',icon:'рџљ—'},{id:'utilities',name:'РљРѕРјРјСѓРЅР°Р»РєР°',icon:'рџ’Ў'},
+  {id:'subscription',name:'РџРѕРґРїРёСЃРєРё',icon:'рџ“є'},{id:'other_exp',name:'Р”СЂСѓРіРѕРµ',icon:'рџ“¦'},
 ];
-const CATS_INCOME=[
-  {id:'salary',name:'Зарплата',icon:'💼'},{id:'freelance',name:'Фриланс',icon:'💻'},
-  {id:'business',name:'Бизнес',icon:'📈'},{id:'gifts_in',name:'Подарки',icon:'🎁'},
-  {id:'interest',name:'Проценты',icon:'🏦'},{id:'rental',name:'Аренда',icon:'🏠'},
-  {id:'dividends',name:'Дивиденды',icon:'💹'},{id:'refund',name:'Возврат',icon:'↩️'},
-  {id:'selling',name:'Продажа',icon:'🏷️'},{id:'other_inc',name:'Другое',icon:'💰'},
+const DEFAULT_CATS_INCOME=[
+  {id:'salary',name:'Р—Р°СЂРїР»Р°С‚Р°',icon:'рџ’ј'},{id:'freelance',name:'Р¤СЂРёР»Р°РЅСЃ',icon:'рџ’»'},
+  {id:'business',name:'Р‘РёР·РЅРµСЃ',icon:'рџ“€'},{id:'gifts_in',name:'РџРѕРґР°СЂРєРё',icon:'рџЋЃ'},
+  {id:'interest',name:'РџСЂРѕС†РµРЅС‚С‹',icon:'рџЏ¦'},{id:'rental',name:'РђСЂРµРЅРґР°',icon:'рџЏ '},
+  {id:'dividends',name:'Р”РёРІРёРґРµРЅРґС‹',icon:'рџ’№'},{id:'refund',name:'Р’РѕР·РІСЂР°С‚',icon:'в†©пёЏ'},
+  {id:'selling',name:'РџСЂРѕРґР°Р¶Р°',icon:'рџЏ·пёЏ'},{id:'other_inc',name:'Р”СЂСѓРіРѕРµ',icon:'рџ’°'},
 ];
-const ACC_ICONS={cash:'💵',card:'💳',deposit:'🏦',savings:'🐷',crypto:'₿'};
+// will be replaced by state.catsExpense / state.catsIncome after load
+let CATS_EXPENSE = [...DEFAULT_CATS_EXPENSE];
+let CATS_INCOME  = [...DEFAULT_CATS_INCOME];
+const ACC_ICONS={cash:'рџ’µ',card:'рџ’і',deposit:'рџЏ¦',savings:'рџђ·',crypto:'в‚ї'};
 const CAT_COLORS=['#1A7A4A','#D64235','#2563EB','#9333EA','#F59E0B','#06B6D4','#EC4899','#84CC16','#F97316','#8B5CF6','#14B8A6','#EF4444','#6366F1','#10B981'];
 
 const APPS_SCRIPT_CODE = `const SHEET_ID = 'YOUR_SHEET_ID_HERE';
@@ -525,7 +623,7 @@ function handleRequest(e) {
 
   try {
     if (action === 'ping') {
-      result = { ok: true, message: 'Подключение успешно!' };
+      result = { ok: true, message: 'РџРѕРґРєР»СЋС‡РµРЅРёРµ СѓСЃРїРµС€РЅРѕ!' };
     } else if (action === 'getData') {
       result = readAllData(ss);
     } else if (action === 'saveData') {
@@ -581,7 +679,7 @@ function writeAllData(ss, data) {
     accSheet.clearContents();
     accSheet.appendRow(['id','name','type','balance','currency']);
     data.accounts.forEach(a => {
-      accSheet.appendRow([a.id,a.name,a.type,a.balance,a.currency||'₽']);
+      accSheet.appendRow([a.id,a.name,a.type,a.balance,a.currency||'в‚Ѕ']);
     });
   }
 
@@ -598,7 +696,7 @@ function getOrCreateSheet(ss, name) {
 
 let state = {
   transactions: [], accounts: [],
-  prefs: { currency: '₽', scriptUrl: '' },
+  prefs: { currency: 'в‚Ѕ', scriptUrl: '' },
   currentMonth: new Date().getMonth(),
   currentYear: new Date().getFullYear(),
 };
@@ -610,7 +708,7 @@ let donutChart = null;
 let syncTimeout = null;
 let isSyncing = false;
 
-// ── STORAGE ──────────────────────────────────────────────
+// в”Ђв”Ђ STORAGE в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 function loadLocal() {
   try {
     const s = localStorage.getItem('finance_data');
@@ -619,13 +717,15 @@ function loadLocal() {
       state.transactions = parsed.transactions || [];
       state.accounts = parsed.accounts || [];
       state.prefs = { ...state.prefs, ...(parsed.prefs || {}) };
+      if (parsed.catsExpense) CATS_EXPENSE = parsed.catsExpense;
+      if (parsed.catsIncome)  CATS_INCOME  = parsed.catsIncome;
     }
   } catch(e) {}
 
   if (!state.accounts.length) {
     state.accounts = [
-      {id:'cash',name:'Наличные',type:'cash',balance:0,currency:'₽'},
-      {id:'card',name:'Карта',type:'card',balance:0,currency:'₽'},
+      {id:'cash',name:'РќР°Р»РёС‡РЅС‹Рµ',type:'cash',balance:0,currency:'в‚Ѕ'},
+      {id:'card',name:'РљР°СЂС‚Р°',type:'card',balance:0,currency:'в‚Ѕ'},
     ];
   }
   if (!state.transactions.length) seedData();
@@ -636,20 +736,22 @@ function saveLocal() {
     transactions: state.transactions,
     accounts: state.accounts,
     prefs: state.prefs,
+    catsExpense: CATS_EXPENSE,
+    catsIncome: CATS_INCOME,
   }));
 }
 
 function seedData() {
   const now = new Date(), y = now.getFullYear(), m = now.getMonth();
   const seed = [
-    {type:'expense',amount:2800,cat:'food',note:'Продукты',account:'card',date:new Date(y,m,2).toISOString().split('T')[0]},
-    {type:'income',amount:65000,cat:'salary',note:'Зарплата',account:'card',date:new Date(y,m,1).toISOString().split('T')[0]},
-    {type:'expense',amount:450,cat:'cafe',note:'Кофе',account:'cash',date:new Date(y,m,3).toISOString().split('T')[0]},
-    {type:'expense',amount:3200,cat:'utilities',note:'ЖКХ',account:'card',date:new Date(y,m,5).toISOString().split('T')[0]},
-    {type:'expense',amount:890,cat:'transport',note:'Проездной',account:'card',date:new Date(y,m,4).toISOString().split('T')[0]},
-    {type:'income',amount:12000,cat:'freelance',note:'Проект',account:'card',date:new Date(y,m,7).toISOString().split('T')[0]},
-    {type:'expense',amount:1500,cat:'sport',note:'Зал',account:'card',date:new Date(y,m,6).toISOString().split('T')[0]},
-    {type:'expense',amount:299,cat:'subscription',note:'Стриминг',account:'card',date:new Date(y,m,9).toISOString().split('T')[0]},
+    {type:'expense',amount:2800,cat:'food',note:'РџСЂРѕРґСѓРєС‚С‹',account:'card',date:new Date(y,m,2).toISOString().split('T')[0]},
+    {type:'income',amount:65000,cat:'salary',note:'Р—Р°СЂРїР»Р°С‚Р°',account:'card',date:new Date(y,m,1).toISOString().split('T')[0]},
+    {type:'expense',amount:450,cat:'cafe',note:'РљРѕС„Рµ',account:'cash',date:new Date(y,m,3).toISOString().split('T')[0]},
+    {type:'expense',amount:3200,cat:'utilities',note:'Р–РљРҐ',account:'card',date:new Date(y,m,5).toISOString().split('T')[0]},
+    {type:'expense',amount:890,cat:'transport',note:'РџСЂРѕРµР·РґРЅРѕР№',account:'card',date:new Date(y,m,4).toISOString().split('T')[0]},
+    {type:'income',amount:12000,cat:'freelance',note:'РџСЂРѕРµРєС‚',account:'card',date:new Date(y,m,7).toISOString().split('T')[0]},
+    {type:'expense',amount:1500,cat:'sport',note:'Р—Р°Р»',account:'card',date:new Date(y,m,6).toISOString().split('T')[0]},
+    {type:'expense',amount:299,cat:'subscription',note:'РЎС‚СЂРёРјРёРЅРі',account:'card',date:new Date(y,m,9).toISOString().split('T')[0]},
   ];
   const today = new Date();
   state.transactions = seed.filter(t => new Date(t.date) <= today).map((t,i) => ({...t,id:'seed_'+i}));
@@ -658,7 +760,7 @@ function seedData() {
   saveLocal();
 }
 
-// ── SYNC ──────────────────────────────────────────────────
+// в”Ђв”Ђ SYNC в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 function getScriptUrl() { return (state.prefs.scriptUrl||'').trim(); }
 
 function setSyncStatus(status, text) {
@@ -676,12 +778,12 @@ function setSyncStatus(status, text) {
 async function syncNow(silent=false) {
   const url = getScriptUrl();
   if (!url) {
-    if (!silent) showToast('Настройте синхронизацию в ⚙️ Настройках');
+    if (!silent) showToast('РќР°СЃС‚СЂРѕР№С‚Рµ СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёСЋ РІ вљ™пёЏ РќР°СЃС‚СЂРѕР№РєР°С…');
     return;
   }
   if (isSyncing) return;
   isSyncing = true;
-  setSyncStatus('syncing', 'Синхронизация...');
+  setSyncStatus('syncing', 'РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ...');
 
   try {
     // 1. get remote data
@@ -689,7 +791,7 @@ async function syncNow(silent=false) {
     const res = await fetch(getUrl);
     const remote = await res.json();
 
-    if (!remote.ok) throw new Error(remote.error || 'Ошибка сервера');
+    if (!remote.ok) throw new Error(remote.error || 'РћС€РёР±РєР° СЃРµСЂРІРµСЂР°');
 
     // 2. merge: take newest by id, local wins on conflict
     const localIds = new Set(state.transactions.map(t => t.id));
@@ -709,10 +811,10 @@ async function syncNow(silent=false) {
     // 3. push merged data back
     await pushToSheets(url);
 
-    setSyncStatus('synced', 'Синхронизировано ✓');
+    setSyncStatus('synced', 'РЎРёРЅС…СЂРѕРЅРёР·РёСЂРѕРІР°РЅРѕ вњ“');
     renderAll();
   } catch(e) {
-    setSyncStatus('error', 'Ошибка синхронизации');
+    setSyncStatus('error', 'РћС€РёР±РєР° СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёРё');
     console.error(e);
   } finally {
     isSyncing = false;
@@ -736,25 +838,25 @@ function schedulePush() {
   const url = getScriptUrl();
   if (!url) return;
   syncTimeout = setTimeout(() => {
-    setSyncStatus('syncing', 'Сохранение...');
+    setSyncStatus('syncing', 'РЎРѕС…СЂР°РЅРµРЅРёРµ...');
     pushToSheets(url)
-      .then(() => setSyncStatus('synced', 'Сохранено ✓'))
-      .catch(() => setSyncStatus('error', 'Ошибка сохранения'));
+      .then(() => setSyncStatus('synced', 'РЎРѕС…СЂР°РЅРµРЅРѕ вњ“'))
+      .catch(() => setSyncStatus('error', 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ'));
   }, 2000);
 }
 
 async function testConnection() {
   const url = document.getElementById('pref-script-url').value.trim();
   const statusEl = document.getElementById('conn-status');
-  if (!url) { statusEl.textContent = '⚠️ Введите URL'; statusEl.style.color='var(--red)'; return; }
-  statusEl.textContent = '⏳ Проверяю...'; statusEl.style.color='var(--text3)';
+  if (!url) { statusEl.textContent = 'вљ пёЏ Р’РІРµРґРёС‚Рµ URL'; statusEl.style.color='var(--red)'; return; }
+  statusEl.textContent = 'вЏі РџСЂРѕРІРµСЂСЏСЋ...'; statusEl.style.color='var(--text3)';
   try {
     const res = await fetch(url + '?action=ping&_=' + Date.now());
     const data = await res.json();
-    if (data.ok) { statusEl.textContent = '✅ ' + data.message; statusEl.style.color='var(--accent)'; }
+    if (data.ok) { statusEl.textContent = 'вњ… ' + data.message; statusEl.style.color='var(--accent)'; }
     else throw new Error(data.error);
   } catch(e) {
-    statusEl.textContent = '❌ Не удалось подключиться. Проверьте URL и доступ.';
+    statusEl.textContent = 'вќЊ РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ. РџСЂРѕРІРµСЂСЊС‚Рµ URL Рё РґРѕСЃС‚СѓРї.';
     statusEl.style.color = 'var(--red)';
   }
 }
@@ -764,12 +866,12 @@ function saveScriptUrl() {
   state.prefs.scriptUrl = url;
   saveLocal();
   const statusEl = document.getElementById('conn-status');
-  statusEl.textContent = '💾 URL сохранён'; statusEl.style.color='var(--accent)';
+  statusEl.textContent = 'рџ’ѕ URL СЃРѕС…СЂР°РЅС‘РЅ'; statusEl.style.color='var(--accent)';
   if (url) setTimeout(() => syncNow(), 500);
 }
 
-// ── RENDER ────────────────────────────────────────────────
-function getCurrency() { return state.prefs?.currency || '₽'; }
+// в”Ђв”Ђ RENDER в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
+function getCurrency() { return state.prefs?.currency || 'в‚Ѕ'; }
 function fmt(n) { return getCurrency()+' '+Math.abs(n).toLocaleString('ru-RU',{minimumFractionDigits:0,maximumFractionDigits:2}); }
 function getMonthTx() {
   return state.transactions.filter(t => {
@@ -777,8 +879,8 @@ function getMonthTx() {
     return d.getMonth()===state.currentMonth && d.getFullYear()===state.currentYear;
   });
 }
-function getCatById(id,type) { return (type==='income'?CATS_INCOME:CATS_EXPENSE).find(c=>c.id===id)||{name:id,icon:'📦'}; }
-function getAccountById(id) { return state.accounts.find(a=>a.id===id)||{name:'Счёт',currency:getCurrency()}; }
+function getCatById(id,type) { return (type==='income'?CATS_INCOME:CATS_EXPENSE).find(c=>c.id===id)||{name:id,icon:'рџ“¦'}; }
+function getAccountById(id) { return state.accounts.find(a=>a.id===id)||{name:'РЎС‡С‘С‚',currency:getCurrency()}; }
 
 function renderAll() {
   renderMonthLabels();
@@ -822,7 +924,7 @@ function renderBarChart() {
     data:{labels:Array.from({length:days},(_,i)=>i+1),datasets:[{data:byDay,backgroundColor:color+'33',borderColor:color,borderWidth:1.5,borderRadius:4}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.raw)}}},
       scales:{x:{grid:{display:false},ticks:{maxTicksLimit:8,color:'#888',font:{size:10}}},
-        y:{grid:{color:'rgba(128,128,128,0.1)'},ticks:{color:'#888',font:{size:10},callback:v=>v>=1000?(v/1000)+'к':v}}}}
+        y:{grid:{color:'rgba(128,128,128,0.1)'},ticks:{color:'#888',font:{size:10},callback:v=>v>=1000?(v/1000)+'Рє':v}}}}
   });
 }
 
@@ -835,7 +937,7 @@ function toggleChart(mode) {
 function renderRecentTx() {
   const txs=getMonthTx().sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,5);
   const el=document.getElementById('recent-list');
-  if(!txs.length){el.innerHTML=`<div class="empty-state"><div class="es-icon">📊</div><div class="es-title">Операций нет</div><div class="es-text">Нажмите ＋ чтобы добавить<br>первую операцию</div></div>`;return;}
+  if(!txs.length){el.innerHTML=`<div class="empty-state"><div class="es-icon">рџ“Љ</div><div class="es-title">РћРїРµСЂР°С†РёР№ РЅРµС‚</div><div class="es-text">РќР°Р¶РјРёС‚Рµ пј‹ С‡С‚РѕР±С‹ РґРѕР±Р°РІРёС‚СЊ<br>РїРµСЂРІСѓСЋ РѕРїРµСЂР°С†РёСЋ</div></div>`;return;}
   el.innerHTML=txs.map(txHTML).join('');
 }
 
@@ -846,8 +948,8 @@ function txHTML(tx) {
   const acc=getAccountById(tx.account);
   return `<div class="tx-item" onclick="openTxDetail('${tx.id}')">
     <div class="tx-icon" style="background:${tx.type==='income'?'var(--accent-bg)':'var(--red-bg)'}">${cat.icon}</div>
-    <div class="tx-info"><div class="tx-name">${tx.note||cat.name}</div><div class="tx-meta">${cat.name} · ${ds} · ${acc.name}</div></div>
-    <div class="tx-amount ${tx.type}">${tx.type==='income'?'+':'−'}${fmt(tx.amount)}</div>
+    <div class="tx-info"><div class="tx-name">${tx.note||cat.name}</div><div class="tx-meta">${cat.name} В· ${ds} В· ${acc.name}</div></div>
+    <div class="tx-amount ${tx.type}">${tx.type==='income'?'+':'в€’'}${fmt(tx.amount)}</div>
   </div>`;
 }
 
@@ -859,7 +961,7 @@ function renderTransactions() {
   if(fs==='date')txs.sort((a,b)=>new Date(b.date)-new Date(a.date));
   else txs.sort((a,b)=>b.amount-a.amount);
   const el=document.getElementById('tx-full-list');
-  if(!txs.length){el.innerHTML=`<div class="empty-state"><div class="es-icon">🧾</div><div class="es-title">Операций нет</div><div class="es-text">За этот период нет операций</div></div>`;return;}
+  if(!txs.length){el.innerHTML=`<div class="empty-state"><div class="es-icon">рџ§ѕ</div><div class="es-title">РћРїРµСЂР°С†РёР№ РЅРµС‚</div><div class="es-text">Р—Р° СЌС‚РѕС‚ РїРµСЂРёРѕРґ РЅРµС‚ РѕРїРµСЂР°С†РёР№</div></div>`;return;}
   const groups={};
   txs.forEach(t=>{if(!groups[t.date])groups[t.date]=[];groups[t.date].push(t);});
   let html='';
@@ -887,7 +989,7 @@ function renderCategories() {
   const sorted=Object.entries(catMap).sort((a,b)=>b[1]-a[1]);
   if(donutChart)donutChart.destroy();
   if(!sorted.length){
-    document.getElementById('cat-list').innerHTML=`<div class="empty-state"><div class="es-icon">🥧</div><div class="es-title">Нет данных</div><div class="es-text">Добавьте операции этого типа</div></div>`;
+    document.getElementById('cat-list').innerHTML=`<div class="empty-state"><div class="es-icon">рџҐ§</div><div class="es-title">РќРµС‚ РґР°РЅРЅС‹С…</div><div class="es-text">Р”РѕР±Р°РІСЊС‚Рµ РѕРїРµСЂР°С†РёРё СЌС‚РѕРіРѕ С‚РёРїР°</div></div>`;
     return;
   }
   const cats=currentCatMode==='income'?CATS_INCOME:CATS_EXPENSE;
@@ -901,7 +1003,7 @@ function renderCategories() {
         tooltip:{callbacks:{label:c=>`${c.label}: ${fmt(c.raw)} (${Math.round(c.raw/total*100)}%)`}}}}
   });
   document.getElementById('cat-list').innerHTML=sorted.map(([id,amount],i)=>{
-    const cat=cats.find(c=>c.id===id)||{name:id,icon:'📦'};
+    const cat=cats.find(c=>c.id===id)||{name:id,icon:'рџ“¦'};
     const pct=total>0?Math.round(amount/total*100):0;
     const color=CAT_COLORS[i%CAT_COLORS.length];
     return `<div class="cat-item"><div class="cat-icon" style="background:${color}22">${cat.icon}</div>
@@ -914,25 +1016,25 @@ function renderAccounts() {
   const total=state.accounts.reduce((s,a)=>s+a.balance,0);
   const mth=getMonthTx();
   let html=`<div style="background:var(--surface);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);">
-    <div style="font-size:11px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Общий баланс</div>
+    <div style="font-size:11px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">РћР±С‰РёР№ Р±Р°Р»Р°РЅСЃ</div>
     <div style="font-size:32px;font-weight:800;letter-spacing:-1.5px;">${getCurrency()} ${total.toLocaleString('ru-RU')}</div>
   </div>`;
   html+=state.accounts.map(acc=>{
     const inc=mth.filter(t=>t.account===acc.id&&t.type==='income').reduce((s,t)=>s+t.amount,0);
     const exp=mth.filter(t=>t.account===acc.id&&t.type==='expense').reduce((s,t)=>s+t.amount,0);
     return `<div class="account-card" onclick="openAccDetail('${acc.id}')">
-      <div class="acc-top"><div class="acc-icon">${ACC_ICONS[acc.type]||'💳'}</div></div>
+      <div class="acc-top"><div class="acc-icon">${ACC_ICONS[acc.type]||'рџ’і'}</div></div>
       <div class="acc-name">${acc.name}</div>
       <div><span class="acc-balance">${acc.currency||getCurrency()} ${acc.balance.toLocaleString('ru-RU')}</span></div>
       <div class="acc-bottom">
-        <div><div class="acc-stat-label">Доходы</div><div class="acc-stat-val" style="color:var(--accent)">+${fmt(inc)}</div></div>
-        <div><div class="acc-stat-label">Расходы</div><div class="acc-stat-val" style="color:var(--red)">−${fmt(exp)}</div></div>
+        <div><div class="acc-stat-label">Р”РѕС…РѕРґС‹</div><div class="acc-stat-val" style="color:var(--accent)">+${fmt(inc)}</div></div>
+        <div><div class="acc-stat-label">Р Р°СЃС…РѕРґС‹</div><div class="acc-stat-val" style="color:var(--red)">в€’${fmt(exp)}</div></div>
       </div></div>`;
   }).join('');
   document.getElementById('accounts-list').innerHTML=html;
 }
 
-// ── ACTIONS ───────────────────────────────────────────────
+// в”Ђв”Ђ ACTIONS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 function changeMonth(dir) {
   state.currentMonth+=dir;
   if(state.currentMonth>11){state.currentMonth=0;state.currentYear++;}
@@ -978,8 +1080,8 @@ function selectCat(id){selectedCat=id;renderCatsGrid();}
 
 function saveTx() {
   const amount=parseFloat(document.getElementById('tx-amount').value);
-  if(!amount||amount<=0){showToast('Введите сумму');return;}
-  if(!selectedCat){showToast('Выберите категорию');return;}
+  if(!amount||amount<=0){showToast('Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ');return;}
+  if(!selectedCat){showToast('Р’С‹Р±РµСЂРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ');return;}
   const tx={
     id:Date.now().toString(),type:currentType,amount,cat:selectedCat,
     note:document.getElementById('tx-note').value,
@@ -991,7 +1093,7 @@ function saveTx() {
   if(acc)acc.balance+=tx.type==='income'?tx.amount:-tx.amount;
   saveLocal();schedulePush();
   closeModal('modal-add');renderAll();
-  showToast(tx.type==='income'?'Доход добавлен ✓':'Расход добавлен ✓');
+  showToast(tx.type==='income'?'Р”РѕС…РѕРґ РґРѕР±Р°РІР»РµРЅ вњ“':'Р Р°СЃС…РѕРґ РґРѕР±Р°РІР»РµРЅ вњ“');
 }
 
 function openAddAccount() {
@@ -1002,7 +1104,7 @@ function openAddAccount() {
 
 function saveAccount() {
   const name=document.getElementById('acc-name').value.trim();
-  if(!name){showToast('Введите название');return;}
+  if(!name){showToast('Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ');return;}
   state.accounts.push({id:Date.now().toString(),name,type:document.getElementById('acc-type').value,balance:parseFloat(document.getElementById('acc-balance').value)||0,currency:document.getElementById('acc-currency').value});
   saveLocal();schedulePush();
   closeModal('modal-account');renderAccounts();
@@ -1010,7 +1112,7 @@ function saveAccount() {
 
 function openSettings() {
   const p=state.prefs||{};
-  document.getElementById('pref-currency').value=p.currency||'₽';
+  document.getElementById('pref-currency').value=p.currency||'в‚Ѕ';
   document.getElementById('pref-script-url').value=p.scriptUrl||'';
   document.getElementById('conn-status').textContent='';
   document.getElementById('modal-settings').classList.add('open');
@@ -1027,19 +1129,19 @@ function openSetupGuide() {
 }
 
 function copyScriptCode() {
-  navigator.clipboard.writeText(APPS_SCRIPT_CODE).then(()=>showToast('Код скопирован ✓'));
+  navigator.clipboard.writeText(APPS_SCRIPT_CODE).then(()=>showToast('РљРѕРґ СЃРєРѕРїРёСЂРѕРІР°РЅ вњ“'));
 }
 
 function clearData() {
-  if(confirm('Удалить все данные? Это нельзя отменить.')){
+  if(confirm('РЈРґР°Р»РёС‚СЊ РІСЃРµ РґР°РЅРЅС‹Рµ? Р­С‚Рѕ РЅРµР»СЊР·СЏ РѕС‚РјРµРЅРёС‚СЊ.')){
     state.transactions=[];
     state.accounts=[
-      {id:'cash',name:'Наличные',type:'cash',balance:0,currency:'₽'},
-      {id:'card',name:'Карта',type:'card',balance:0,currency:'₽'},
+      {id:'cash',name:'РќР°Р»РёС‡РЅС‹Рµ',type:'cash',balance:0,currency:'в‚Ѕ'},
+      {id:'card',name:'РљР°СЂС‚Р°',type:'card',balance:0,currency:'в‚Ѕ'},
     ];
     saveLocal();
     closeModal('modal-settings');renderAll();
-    showToast('Данные удалены');
+    showToast('Р”Р°РЅРЅС‹Рµ СѓРґР°Р»РµРЅС‹');
   }
 }
 
@@ -1093,8 +1195,8 @@ function selectEditCat(id) { editingCat=id; renderEditCatsGrid(); }
 
 function saveEditTx() {
   const amount = parseFloat(document.getElementById('edit-amount').value);
-  if (!amount || amount <= 0) { showToast('Введите сумму'); return; }
-  if (!editingCat) { showToast('Выберите категорию'); return; }
+  if (!amount || amount <= 0) { showToast('Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ'); return; }
+  if (!editingCat) { showToast('Р’С‹Р±РµСЂРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ'); return; }
 
   const idx = state.transactions.findIndex(t => t.id === editingTxId);
   if (idx === -1) return;
@@ -1121,7 +1223,7 @@ function saveEditTx() {
 
   saveLocal(); schedulePush();
   closeModal('modal-edit'); renderAll();
-  showToast('Операция обновлена ✓');
+  showToast('РћРїРµСЂР°С†РёСЏ РѕР±РЅРѕРІР»РµРЅР° вњ“');
 }
 
 function deleteTx() {
@@ -1133,15 +1235,148 @@ function deleteTx() {
   state.transactions = state.transactions.filter(t => t.id !== editingTxId);
   saveLocal(); schedulePush();
   closeModal('modal-edit'); renderAll();
-  showToast('Операция удалена');
+  showToast('РћРїРµСЂР°С†РёСЏ СѓРґР°Р»РµРЅР°');
 }
 
+let editingAccId = null;
+
 function openAccDetail(id) {
-  const acc=state.accounts.find(a=>a.id===id);if(!acc)return;
-  if(confirm(`${ACC_ICONS[acc.type]||'💳'} ${acc.name}\nБаланс: ${acc.currency||getCurrency()} ${acc.balance.toLocaleString('ru-RU')}\nОпераций: ${state.transactions.filter(t=>t.account===id).length}\n\nУдалить этот счёт?`)){
-    state.accounts=state.accounts.filter(a=>a.id!==id);
-    saveLocal();schedulePush();renderAccounts();
+  const acc = state.accounts.find(a => a.id === id);
+  if (!acc) return;
+  editingAccId = id;
+  document.getElementById('edit-acc-name').value = acc.name;
+  document.getElementById('edit-acc-balance').value = acc.balance;
+  document.getElementById('edit-acc-type').value = acc.type;
+  document.getElementById('edit-acc-currency').value = acc.currency || 'в‚Ѕ';
+  const txCount = state.transactions.filter(t => t.account === id).length;
+  document.getElementById('edit-acc-info').textContent = `РћРїРµСЂР°С†РёР№ Р·Р° РІСЃС‘ РІСЂРµРјСЏ: ${txCount}`;
+  document.getElementById('modal-edit-acc').classList.add('open');
+}
+
+function saveEditAcc() {
+  const name = document.getElementById('edit-acc-name').value.trim();
+  if (!name) { showToast('Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ'); return; }
+  const acc = state.accounts.find(a => a.id === editingAccId);
+  if (!acc) return;
+  acc.name = name;
+  acc.balance = parseFloat(document.getElementById('edit-acc-balance').value) || 0;
+  acc.type = document.getElementById('edit-acc-type').value;
+  acc.currency = document.getElementById('edit-acc-currency').value;
+  saveLocal(); schedulePush();
+  closeModal('modal-edit-acc'); renderAccounts();
+  showToast('РЎС‡С‘С‚ РѕР±РЅРѕРІР»С‘РЅ вњ“');
+}
+
+function deleteAcc() {
+  if (!editingAccId) return;
+  const txCount = state.transactions.filter(t => t.account === editingAccId).length;
+  if (txCount > 0) {
+    if (!confirm(`РќР° СЌС‚РѕРј СЃС‡С‘С‚Рµ РµСЃС‚СЊ ${txCount} РѕРїРµСЂР°С†РёР№. РЈРґР°Р»РёС‚СЊ СЃС‡С‘С‚ РІРјРµСЃС‚Рµ СЃ РЅРёРјРё?`)) return;
+    state.transactions = state.transactions.filter(t => t.account !== editingAccId);
   }
+  state.accounts = state.accounts.filter(a => a.id !== editingAccId);
+  saveLocal(); schedulePush();
+  closeModal('modal-edit-acc'); renderAccounts();
+  showToast('РЎС‡С‘С‚ СѓРґР°Р»С‘РЅ');
+}
+
+// в”Ђв”Ђ CATEGORY MANAGEMENT в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
+let manageCatType = 'expense';
+let editingCatId = null;
+
+function openManageCats() {
+  manageCatType = currentCatMode;
+  renderManageCatsList();
+  document.getElementById('mcat-btn-expense').classList.toggle('active', manageCatType==='expense');
+  document.getElementById('mcat-btn-income').classList.toggle('active', manageCatType==='income');
+  document.getElementById('modal-manage-cats').classList.add('open');
+}
+
+function setManageCatType(t) {
+  manageCatType = t;
+  document.getElementById('mcat-btn-expense').classList.toggle('active', t==='expense');
+  document.getElementById('mcat-btn-income').classList.toggle('active', t==='income');
+  renderManageCatsList();
+}
+
+function renderManageCatsList() {
+  const cats = manageCatType==='expense' ? CATS_EXPENSE : CATS_INCOME;
+  const list = document.getElementById('manage-cats-list');
+  if (!cats.length) {
+    list.innerHTML = `<div style="text-align:center;padding:20px;color:var(--text3);font-size:13px;">РќРµС‚ РєР°С‚РµРіРѕСЂРёР№. Р”РѕР±Р°РІСЊС‚Рµ РїРµСЂРІСѓСЋ!</div>`;
+    return;
+  }
+  list.innerHTML = cats.map(c => `
+    <div style="display:flex;align-items:center;gap:12px;background:var(--surface2);border-radius:var(--radius-sm);padding:12px 14px;cursor:pointer;" onclick="openEditCat('${c.id}')">
+      <span style="font-size:24px;width:36px;text-align:center;">${c.icon}</span>
+      <span style="flex:1;font-size:15px;font-weight:600;">${c.name}</span>
+      <span style="font-size:13px;color:var(--text3);">вњЏпёЏ</span>
+    </div>
+  `).join('');
+}
+
+function openAddCat() {
+  editingCatId = null;
+  document.getElementById('edit-cat-title').textContent = 'РќРѕРІР°СЏ РєР°С‚РµРіРѕСЂРёСЏ';
+  document.getElementById('edit-cat-name').value = '';
+  document.getElementById('edit-cat-icon').value = '';
+  document.getElementById('edit-cat-type').value = manageCatType;
+  document.getElementById('delete-cat-btn').style.display = 'none';
+  document.getElementById('modal-edit-cat').classList.add('open');
+}
+
+function openEditCat(id) {
+  const cats = manageCatType==='expense' ? CATS_EXPENSE : CATS_INCOME;
+  const cat = cats.find(c => c.id===id);
+  if (!cat) return;
+  editingCatId = id;
+  document.getElementById('edit-cat-title').textContent = 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєР°С‚РµРіРѕСЂРёСЋ';
+  document.getElementById('edit-cat-name').value = cat.name;
+  document.getElementById('edit-cat-icon').value = cat.icon;
+  document.getElementById('edit-cat-type').value = manageCatType;
+  document.getElementById('delete-cat-btn').style.display = 'block';
+  document.getElementById('modal-edit-cat').classList.add('open');
+}
+
+function saveEditCat() {
+  const name = document.getElementById('edit-cat-name').value.trim();
+  const icon = document.getElementById('edit-cat-icon').value.trim() || 'рџ“¦';
+  const type = document.getElementById('edit-cat-type').value;
+  if (!name) { showToast('Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ'); return; }
+
+  const arr = type==='expense' ? CATS_EXPENSE : CATS_INCOME;
+
+  if (editingCatId) {
+    // edit existing
+    const idx = arr.findIndex(c => c.id===editingCatId);
+    if (idx !== -1) { arr[idx].name = name; arr[idx].icon = icon; }
+  } else {
+    // add new
+    const newId = 'cat_' + Date.now();
+    arr.push({ id: newId, name, icon });
+  }
+
+  saveLocal(); schedulePush();
+  closeModal('modal-edit-cat');
+  renderManageCatsList();
+  renderAll();
+  showToast(editingCatId ? 'РљР°С‚РµРіРѕСЂРёСЏ РѕР±РЅРѕРІР»РµРЅР° вњ“' : 'РљР°С‚РµРіРѕСЂРёСЏ РґРѕР±Р°РІР»РµРЅР° вњ“');
+}
+
+function deleteCat() {
+  if (!editingCatId) return;
+  const type = document.getElementById('edit-cat-type').value;
+  const txCount = state.transactions.filter(t => t.cat===editingCatId && t.type===type).length;
+  if (txCount > 0) {
+    if (!confirm(`Р’ СЌС‚РѕР№ РєР°С‚РµРіРѕСЂРёРё ${txCount} РѕРїРµСЂР°С†РёР№. РћРЅРё РѕСЃС‚Р°РЅСѓС‚СЃСЏ, РЅРѕ Р±РµР· РєР°С‚РµРіРѕСЂРёРё. РЈРґР°Р»РёС‚СЊ?`)) return;
+  }
+  if (type==='expense') CATS_EXPENSE = CATS_EXPENSE.filter(c => c.id!==editingCatId);
+  else CATS_INCOME = CATS_INCOME.filter(c => c.id!==editingCatId);
+  saveLocal(); schedulePush();
+  closeModal('modal-edit-cat');
+  renderManageCatsList();
+  renderAll();
+  showToast('РљР°С‚РµРіРѕСЂРёСЏ СѓРґР°Р»РµРЅР°');
 }
 
 function closeModal(id){document.getElementById(id).classList.remove('open');}
@@ -1158,8 +1393,8 @@ document.querySelectorAll('.modal-overlay').forEach(o=>{
 });
 
 // online/offline
-window.addEventListener('online',()=>{setSyncStatus('syncing','Восстановление соединения...');syncNow(true);});
-window.addEventListener('offline',()=>setSyncStatus('offline','Нет соединения'));
+window.addEventListener('online',()=>{setSyncStatus('syncing','Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ СЃРѕРµРґРёРЅРµРЅРёСЏ...');syncNow(true);});
+window.addEventListener('offline',()=>setSyncStatus('offline','РќРµС‚ СЃРѕРµРґРёРЅРµРЅРёСЏ'));
 
 // PWA install
 if('serviceWorker' in navigator){
