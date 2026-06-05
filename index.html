@@ -999,7 +999,7 @@ function txHTML(tx) {
   const d=new Date(tx.date);
   const ds=d.getDate()+' '+MONTHS[d.getMonth()].slice(0,3).toLowerCase();
   const acc=getAccountById(tx.account);
-  return `<div class="tx-item" onclick="openTxDetail('${tx.id}')">
+  return `<div class="tx-item" data-txid="${tx.id}" style="cursor:pointer;">
     <div class="tx-icon" style="background:${tx.type==='income'?'var(--accent-bg)':'var(--red-bg)'}">${cat.icon}</div>
     <div class="tx-info"><div class="tx-name">${tx.note||cat.name}</div><div class="tx-meta">${cat.name} · ${ds} · ${acc.name}</div></div>
     <div class="tx-amount ${tx.type}">${tx.type==='income'?'+':'−'}${fmt(tx.amount)}</div>
@@ -1450,6 +1450,12 @@ function showToast(msg) {
 
 document.querySelectorAll('.modal-overlay').forEach(o=>{
   o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');});
+});
+
+// делегирование кликов по транзакциям
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-txid]');
+  if (el) openTxDetail(el.dataset.txid);
 });
 
 // online/offline
