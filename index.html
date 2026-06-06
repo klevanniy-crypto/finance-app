@@ -839,26 +839,30 @@ async function syncNow(silent=false) {
     const remote = await res.json();
     if (!remote.ok) throw new Error(remote.error || 'Ошибка сервера');
 
-    // 2. мержим — remote основа, добавляем локальные новые (которых нет в remote)
-    const remoteIds = new Set((remote.transactions||[]).map(t => t.id));
-    const localNew = state.transactions.filter(t => !remoteIds.has(t.id));
-    state.transactions = [...(remote.transactions||[]), ...localNew];
+    // 2. строгий merge по ID — дублей быть не может
+    const txById = {};
+    // сначала remote
+    (remote.transactions||[]).forEach(t => txById[t.id] = t);
+    // потом local перезаписывает (локальные правки важнее)
+    state.transactions.forEach(t => txById[t.id] = t);
+    state.transactions = Object.values(txById);
 
-    // счета: remote основа, добавляем локальные новые
-    const remoteAccIds = new Set((remote.accounts||[]).map(a => a.id));
-    const localNewAccs = state.accounts.filter(a => !remoteAccIds.has(a.id));
-    state.accounts = [...(remote.accounts||[]), ...localNewAccs];
+    // счета: merge по ID
+    const accById = {};
+    (remote.accounts||[]).forEach(a => accById[a.id] = a);
+    state.accounts.forEach(a => accById[a.id] = a); // local wins
+    state.accounts = Object.values(accById);
 
-    // категории: remote полностью заменяет (если не пустые)
+    // категории: remote заменяет если не пустые
     if (remote.catsExpense && remote.catsExpense.length) CATS_EXPENSE = remote.catsExpense;
     if (remote.catsIncome  && remote.catsIncome.length)  CATS_INCOME  = remote.catsIncome;
 
-    // настройки: мержим
+    // настройки
     if (remote.prefs) state.prefs = { ...remote.prefs, scriptUrl: state.prefs.scriptUrl };
 
     saveLocal();
 
-    // 3. пушим обратно полный актуальный стейт
+    // 3. пушим полный актуальный стейт обратно
     await pushToSheets(url);
 
     setSyncStatus('synced', 'Синхронизировано ✓');
