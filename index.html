@@ -792,18 +792,10 @@ function loadLocal() {
       state.transactions = parsed.transactions || [];
       state.accounts = parsed.accounts || [];
       state.prefs = { ...state.prefs, ...(parsed.prefs || {}) };
-      if (parsed.catsExpense) CATS_EXPENSE = parsed.catsExpense;
-      if (parsed.catsIncome)  CATS_INCOME  = parsed.catsIncome;
+      if (parsed.catsExpense && parsed.catsExpense.length) CATS_EXPENSE = parsed.catsExpense;
+      if (parsed.catsIncome  && parsed.catsIncome.length)  CATS_INCOME  = parsed.catsIncome;
     }
   } catch(e) {}
-
-  if (!state.accounts.length) {
-    state.accounts = [
-      {id:'cash',name:'Наличные',type:'cash',balance:0,currency:'₽'},
-      {id:'card',name:'Карта',type:'card',balance:0,currency:'₽'},
-    ];
-  }
-  if (!state.transactions.length) seedData();
 }
 
 function saveLocal() {
@@ -814,25 +806,6 @@ function saveLocal() {
     catsExpense: CATS_EXPENSE,
     catsIncome: CATS_INCOME,
   }));
-}
-
-function seedData() {
-  const now = new Date(), y = now.getFullYear(), m = now.getMonth();
-  const seed = [
-    {type:'expense',amount:2800,cat:'food',note:'Продукты',account:'card',date:new Date(y,m,2).toISOString().split('T')[0]},
-    {type:'income',amount:65000,cat:'salary',note:'Зарплата',account:'card',date:new Date(y,m,1).toISOString().split('T')[0]},
-    {type:'expense',amount:450,cat:'cafe',note:'Кофе',account:'cash',date:new Date(y,m,3).toISOString().split('T')[0]},
-    {type:'expense',amount:3200,cat:'utilities',note:'ЖКХ',account:'card',date:new Date(y,m,5).toISOString().split('T')[0]},
-    {type:'expense',amount:890,cat:'transport',note:'Проездной',account:'card',date:new Date(y,m,4).toISOString().split('T')[0]},
-    {type:'income',amount:12000,cat:'freelance',note:'Проект',account:'card',date:new Date(y,m,7).toISOString().split('T')[0]},
-    {type:'expense',amount:1500,cat:'sport',note:'Зал',account:'card',date:new Date(y,m,6).toISOString().split('T')[0]},
-    {type:'expense',amount:299,cat:'subscription',note:'Стриминг',account:'card',date:new Date(y,m,9).toISOString().split('T')[0]},
-  ];
-  const today = new Date();
-  state.transactions = seed.filter(t => new Date(t.date) <= today).map((t,i) => ({...t,id:'seed_'+i}));
-  state.accounts[1].balance = 65000+12000-2800-3200-890-1500-299;
-  state.accounts[0].balance = 5000-450;
-  saveLocal();
 }
 
 // ── SYNC ──────────────────────────────────────────────────
@@ -861,34 +834,31 @@ async function syncNow(silent=false) {
   setSyncStatus('syncing', 'Синхронизация...');
 
   try {
-    // 1. get remote data
-    const getUrl = url + '?action=getData&_=' + Date.now();
-    const res = await fetch(getUrl);
+    // 1. получаем данные из Sheets
+    const res = await fetch(url + '?action=getData&_=' + Date.now());
     const remote = await res.json();
-
     if (!remote.ok) throw new Error(remote.error || 'Ошибка сервера');
 
-    // merge transactions: объединяем по id без дублей
-    const remoteMap = {};
-    (remote.transactions||[]).forEach(t => remoteMap[t.id] = t);
-    const localMap = {};
-    state.transactions.forEach(t => localMap[t.id] = t);
-    // local wins on conflict (свежее редактирование)
-    const merged = { ...remoteMap, ...localMap };
-    state.transactions = Object.values(merged);
+    // 2. мержим — remote основа, добавляем локальные новые (которых нет в remote)
+    const remoteIds = new Set((remote.transactions||[]).map(t => t.id));
+    const localNew = state.transactions.filter(t => !remoteIds.has(t.id));
+    state.transactions = [...(remote.transactions||[]), ...localNew];
 
-    // merge accounts
-    const localAccIds = new Set(state.accounts.map(a => a.id));
-    const newAccounts = (remote.accounts||[]).filter(a => !localAccIds.has(a.id));
-    state.accounts = [...state.accounts, ...newAccounts];
+    // счета: remote основа, добавляем локальные новые
+    const remoteAccIds = new Set((remote.accounts||[]).map(a => a.id));
+    const localNewAccs = state.accounts.filter(a => !remoteAccIds.has(a.id));
+    state.accounts = [...(remote.accounts||[]), ...localNewAccs];
 
-    // merge categories: remote wins
+    // категории: remote полностью заменяет (если не пустые)
     if (remote.catsExpense && remote.catsExpense.length) CATS_EXPENSE = remote.catsExpense;
     if (remote.catsIncome  && remote.catsIncome.length)  CATS_INCOME  = remote.catsIncome;
 
+    // настройки: мержим
+    if (remote.prefs) state.prefs = { ...remote.prefs, scriptUrl: state.prefs.scriptUrl };
+
     saveLocal();
 
-    // 3. push merged data back
+    // 3. пушим обратно полный актуальный стейт
     await pushToSheets(url);
 
     setSyncStatus('synced', 'Синхронизировано ✓');
@@ -1220,15 +1190,24 @@ function copyScriptCode() {
 }
 
 function clearData() {
-  if(confirm('Удалить все данные? Это нельзя отменить.')){
-    state.transactions=[];
-    state.accounts=[
-      {id:'cash',name:'Наличные',type:'cash',balance:0,currency:'₽'},
-      {id:'card',name:'Карта',type:'card',balance:0,currency:'₽'},
-    ];
+  if(confirm('Удалить все данные локально и в Google Sheets? Это нельзя отменить.')){
+    state.transactions = [];
+    state.accounts = [];
+    CATS_EXPENSE = [...DEFAULT_CATS_EXPENSE];
+    CATS_INCOME  = [...DEFAULT_CATS_INCOME];
     saveLocal();
-    closeModal('modal-settings');renderAll();
-    showToast('Данные удалены');
+    // очищаем Sheets
+    const url = getScriptUrl();
+    if (url) {
+      const data = JSON.stringify({ transactions:[], accounts:[], catsExpense:[], catsIncome:[], prefs: state.prefs });
+      fetch(url + '?action=saveData&data=' + encodeURIComponent(data))
+        .then(() => showToast('Данные удалены везде ✓'))
+        .catch(() => showToast('Локально удалено, Sheets — ошибка'));
+    } else {
+      showToast('Данные удалены');
+    }
+    closeModal('modal-settings');
+    renderAll();
   }
 }
 
